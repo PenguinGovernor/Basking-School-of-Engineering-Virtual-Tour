@@ -8,10 +8,9 @@ class HomePage extends StatelessWidget
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: Colors.amber,
-        title: new Text("Baskin School of Engineering Virtual Tour"),
+        title: new Text("BSOE Virtual Tour"),
       ),
-      body: new HomePageBody(),
-      floatingActionButton: new HomePageButton(),
+      body: new HomePageBody()
     );
   }
 }
@@ -57,6 +56,16 @@ class HomePageBody extends StatelessWidget
                     )
                 )
               ],
+            ),
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new IconButton(
+                  icon: new Icon(Icons.arrow_forward, color: Colors.blueAccent),
+                  onPressed: null,
+                  iconSize: 60.0,
+                )
+              ],
             )
 
 
@@ -67,20 +76,3 @@ class HomePageBody extends StatelessWidget
   }
 }
 
-class HomePageButton extends StatelessWidget
-{
-  
-  Widget build(BuildContext context)
-  {
-    return new FloatingActionButton(
-      backgroundColor: Colors.blue,
-      onPressed: () {
-        
-      },
-      child: new Icon(
-        Icons.arrow_forward
-      ),
-
-    );
-  }
-}
