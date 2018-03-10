@@ -62,7 +62,9 @@ class HomePageBody extends StatelessWidget
               children: <Widget>[
                 new IconButton(
                   icon: new Icon(Icons.arrow_forward, color: Colors.blueAccent),
-                  onPressed: null,
+                  onPressed: () {
+                    Navigator.of(context).pushNamed("/SelectionPage");
+                  },
                   iconSize: 60.0,
                 )
               ],
