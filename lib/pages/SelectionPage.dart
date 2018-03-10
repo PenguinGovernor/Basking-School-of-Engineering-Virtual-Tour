@@ -1,28 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SelectionPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        backgroundColor: Colors.amber,
-        title: new Text("Major Selection"),
-      ),
-      body: new SelectionPageBody(),
-    );
-  }
-}
-
-class SelectionPageBody extends StatefulWidget {
-  SelectionPageBodyState createState() {
-    var state = new SelectionPageBodyState();
-    state.onLoad();
-    return state;
-  }
-
-  // SelectionPageBodyState createState() => new SelectionPageBodyState();
-}
-
+// Helper Enum
 enum majorList {
   gradDivision,
   computerScience,
@@ -31,6 +9,38 @@ enum majorList {
   eletricalEngineering,
   tim,
   bioEngineering
+}
+
+// State that will be utilitzed for the body
+final gBodyState = new GlobalKey<SelectionPageBodyState>();
+
+// Main Class
+class SelectionPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        backgroundColor: Colors.amber,
+        title: new Text("Major Selection"),
+      ),
+      body: new SelectionPageBody(
+        key: gBodyState
+      ),
+      floatingActionButton: new SelctionPageFab(),
+    );
+  }
+}
+
+// SelectionPageBody class and state
+class SelectionPageBody extends StatefulWidget {
+
+  SelectionPageBody({ Key key }) : super(key: key);
+  
+  SelectionPageBodyState createState() {
+    var state = new SelectionPageBodyState();
+    state.onLoad();
+    return state;
+  }
 }
 
 class SelectionPageBodyState extends State<SelectionPageBody> {
@@ -49,14 +59,14 @@ class SelectionPageBodyState extends State<SelectionPageBody> {
         new Column(
           children: <Widget>[
             const Text(
-              "Please select your\nmajors and areas of interest:",
+              "\nPlease select your\nmajors and areas of interest:",
               textAlign: TextAlign.center,
               textScaleFactor: 1.5,
             ),
             new CheckboxListTile(
               title: new Text("Graduate Division"),
               activeColor: Colors.amber,
-              secondary: const Icon(Icons.school,color: Colors.blueAccent),
+              secondary: const Icon(Icons.school, color: Colors.blueAccent),
               value: boolList[majorList.gradDivision.index],
               onChanged: (value) {
                 setState(() {
@@ -79,7 +89,8 @@ class SelectionPageBodyState extends State<SelectionPageBody> {
               title: new Text("CS: Game Design"),
               value: boolList[majorList.computerSciencGame.index],
               activeColor: Colors.amber,
-              secondary: new Icon(Icons.videogame_asset, color: Colors.blueAccent),
+              secondary:
+                  new Icon(Icons.videogame_asset, color: Colors.blueAccent),
               onChanged: (value) {
                 setState(() {
                   boolList[majorList.computerSciencGame.index] = value;
@@ -119,9 +130,69 @@ class SelectionPageBodyState extends State<SelectionPageBody> {
                 });
               },
             ),
+            // new Text(
+            //   "\nTouch the arrow to start the tour!\n",
+            //   textAlign: TextAlign.center
+            // )
           ],
         )
       ],
     );
   }
+}
+
+class SelctionPageFab extends StatefulWidget
+{
+
+  SelectionPageFabState createState() {
+    var state = new SelectionPageFabState();
+    state.checkedItems = gBodyState.currentState.boolList;
+    return state;
+  }
+
+}
+
+class SelectionPageFabState extends State<SelctionPageFab>
+{
+  MaterialColor fabColor = Colors.blueGrey;
+  List checkedItems;
+
+  bool isValidSet() {
+    for(var i = 0; i < checkedItems.length ; i++) {
+      if(checkedItems[i] == true) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @override
+  Widget build(BuildContext context)
+  {
+    return new FloatingActionButton(
+      backgroundColor: Colors.blue,
+      tooltip: "Start the tour",
+      child: new Icon(Icons.arrow_forward),
+      onPressed: () {
+        if(isValidSet()) {
+          print("Good to go!");
+        } else {
+          print("No good!");
+          Scaffold.of(context).showSnackBar(
+            new SnackBar(
+              action: new SnackBarAction(
+                label: "HIDE",
+                onPressed: () => Scaffold.of(context).hideCurrentSnackBar(),
+              ),
+              content: new Text(
+                "Please select one or more majors!"
+              ),
+            )
+          );
+        }
+      }
+    );
+  }
+
+  
 }
