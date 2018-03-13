@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:map_view/map_view.dart';
 
 // Helper Enum
 enum majorList {
@@ -23,9 +24,7 @@ class SelectionPage extends StatelessWidget {
         backgroundColor: Colors.amber,
         title: new Text("Major Selection"),
       ),
-      body: new SelectionPageBody(
-        key: gBodyState
-      ),
+      body: new SelectionPageBody(key: gBodyState),
       floatingActionButton: new SelctionPageFab(),
     );
   }
@@ -33,9 +32,8 @@ class SelectionPage extends StatelessWidget {
 
 // SelectionPageBody class and state
 class SelectionPageBody extends StatefulWidget {
+  SelectionPageBody({Key key}) : super(key: key);
 
-  SelectionPageBody({ Key key }) : super(key: key);
-  
   SelectionPageBodyState createState() {
     var state = new SelectionPageBodyState();
     state.onLoad();
@@ -141,58 +139,52 @@ class SelectionPageBodyState extends State<SelectionPageBody> {
   }
 }
 
-class SelctionPageFab extends StatefulWidget
-{
-
+class SelctionPageFab extends StatefulWidget {
   SelectionPageFabState createState() {
     var state = new SelectionPageFabState();
     state.checkedItems = gBodyState.currentState.boolList;
     return state;
   }
-
 }
 
-class SelectionPageFabState extends State<SelctionPageFab>
-{
+class SelectionPageFabState extends State<SelctionPageFab> {
   MaterialColor fabColor = Colors.blueGrey;
   List checkedItems;
+  var _mapView = new MapView();
 
   bool isValidSet() {
-    for(var i = 0; i < checkedItems.length ; i++) {
-      if(checkedItems[i] == true) {
+    for (var i = 0; i < checkedItems.length; i++) {
+      if (checkedItems[i] == true) {
         return true;
       }
     }
     return false;
   }
 
-  @override
-  Widget build(BuildContext context)
-  {
-    return new FloatingActionButton(
-      backgroundColor: Colors.blue,
-      tooltip: "Start the tour",
-      child: new Icon(Icons.arrow_forward),
-      onPressed: () {
-        if(isValidSet()) {
-          print("Good to go!");
-        } else {
-          print("No good!");
-          Scaffold.of(context).showSnackBar(
-            new SnackBar(
-              action: new SnackBarAction(
-                label: "HIDE",
-                onPressed: () => Scaffold.of(context).hideCurrentSnackBar(),
-              ),
-              content: new Text(
-                "Please select one or more majors!"
-              ),
-            )
-          );
-        }
-      }
-    );
+  void showMap() {
+    _mapView.show(new MapOptions(showUserLocation: true));
   }
 
-  
+  @override
+  Widget build(BuildContext context) {
+    return new FloatingActionButton(
+        backgroundColor: Colors.blue,
+        tooltip: "Start the tour",
+        child: new Icon(Icons.arrow_forward),
+        onPressed: () {
+          if (isValidSet()) {
+            print("Good to go!");
+            showMap();
+          } else {
+            print("No good!");
+            Scaffold.of(context).showSnackBar(new SnackBar(
+                  action: new SnackBarAction(
+                    label: "HIDE",
+                    onPressed: () => Scaffold.of(context).hideCurrentSnackBar(),
+                  ),
+                  content: new Text("Please select one or more majors!"),
+                ));
+          }
+        });
+  }
 }
