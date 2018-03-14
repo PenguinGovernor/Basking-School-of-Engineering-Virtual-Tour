@@ -191,23 +191,32 @@ class SelectionPageFabState extends State<SelctionPageFab> {
 
       // If cs gd
       if (items[majorList.computerSciencGame.index]) {
-        mapView.addMarker(
-            new Marker("gdl", "Game Design Lab", 37.000419, -122.062715, color: Colors.deepPurple));
+        mapView.addMarker(new Marker(
+            "gdl", "Game Design Lab", 37.000419, -122.062715,
+            color: Colors.deepPurple));
       }
 
-    // If ee 
-    if(items[majorList.eletricalEngineering.index]) {
-      mapView.addMarker(
-        new Marker("dl", "DANSER Lab", 37.000929, -122.063308, color: Colors.blue)
-      );
-      mapView.addMarker(
-        new Marker("ee101", "Eletrical Engineering 101 Lab", 37.000358, -122.063413, color: Colors.blue)
-      );
-      mapView.addMarker(
-        new Marker("aol", "Applied Optics Lab", 37.000495, -122.062870, color: Colors.blue)
-      );
-    }
+      // If ee
+      if (items[majorList.eletricalEngineering.index]) {
+        mapView.addMarker(new Marker("dl", "DANSER Lab", 37.000929, -122.063308,
+            color: Colors.blue));
+        mapView.addMarker(new Marker(
+            "ee101", "Eletrical Engineering 101 Lab", 37.000358, -122.063413,
+            color: Colors.blue));
+        mapView.addMarker(new Marker(
+            "aol", "Applied Optics Lab", 37.000495, -122.062870,
+            color: Colors.blue));
+      }
 
+      // If graduate
+      if (items[majorList.gradDivision.index]) {
+        mapView.addMarker(new Marker(
+            "ga", "Graduate Advising Office", 36.9896204, -122.0649923,
+            color: Colors.yellow));
+        mapView.addMarker(new Marker(
+            "gsh", "Graduate Student Housing", 37.0000333, -122.0642744,
+            color: Colors.yellow));
+      }
     });
   }
 
