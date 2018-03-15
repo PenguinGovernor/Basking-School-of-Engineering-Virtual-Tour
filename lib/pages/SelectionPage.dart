@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:map_view/map_view.dart';
+import 'package:bsoe_tour/MapView.dart';
 
 // Helper Enum
 enum majorList {
@@ -118,6 +118,18 @@ class SelectionPageBodyState extends State<SelectionPageBody> {
               },
             ),
             new CheckboxListTile(
+              title: new Text("Bioengineering"),
+              value: boolList[majorList.bioEngineering.index],
+              activeColor: Colors.amber,
+              secondary:
+                  new Icon(Icons.nature_people, color: Colors.blueAccent),
+              onChanged: (value) {
+                setState(() {
+                  boolList[majorList.bioEngineering.index] = value;
+                });
+              },
+            ),
+            new CheckboxListTile(
               title: new Text("Technology Information Management"),
               value: boolList[majorList.tim.index],
               activeColor: Colors.amber,
@@ -128,6 +140,7 @@ class SelectionPageBodyState extends State<SelectionPageBody> {
                 });
               },
             ),
+
             // new Text(
             //   "\nTouch the arrow to start the tour!\n",
             //   textAlign: TextAlign.center
@@ -150,7 +163,7 @@ class SelctionPageFab extends StatefulWidget {
 class SelectionPageFabState extends State<SelctionPageFab> {
   MaterialColor fabColor = Colors.blueGrey;
   List checkedItems;
-  var mapView = new MapView();
+  BsoeMap map = new BsoeMap();
 
   bool isValidSet() {
     for (var i = 0; i < checkedItems.length; i++) {
@@ -161,97 +174,32 @@ class SelectionPageFabState extends State<SelctionPageFab> {
     return false;
   }
 
-  void setMarkers(List items) {
-    mapView.onMapReady.listen((_) {
-      // Always set Mesa
-      mapView.addMarker(
-        new Marker("mesa", "MESA Engineering Program", 37.000258, -122.062930,
-            color: Colors.red),
-      );
-
-      // If computer engineering
-      if (items[majorList.computerEngineering.index]) {
-        mapView.addMarker(new Marker(
-            "mech", "Mechatronics Lab", 37.000189, -122.063545,
-            color: Colors.orange));
-        mapView.addMarker(new Marker(
-            "cnl", "Computer Networks Lab", 37.000271, -122.063057,
-            color: Colors.orange));
-      }
-
-      // If computer science
-      if (items[majorList.computerScience.index]) {
-        mapView.addMarker(new Marker("ll", "Linux Lab", 37.0002225, -122.063148,
-            color: Colors.green));
-
-        mapView.addMarker(new Marker(
-            "cvl", "Computer Vision Lab", 37.000888, -122.063382,
-            color: Colors.green));
-      }
-
-      // If cs gd
-      if (items[majorList.computerSciencGame.index]) {
-        mapView.addMarker(new Marker(
-            "gdl", "Game Design Lab", 37.000419, -122.062715,
-            color: Colors.deepPurple));
-      }
-
-      // If ee
-      if (items[majorList.eletricalEngineering.index]) {
-        mapView.addMarker(new Marker("dl", "DANSER Lab", 37.000929, -122.063308,
-            color: Colors.blue));
-        mapView.addMarker(new Marker(
-            "ee101", "Eletrical Engineering 101 Lab", 37.000358, -122.063413,
-            color: Colors.blue));
-        mapView.addMarker(new Marker(
-            "aol", "Applied Optics Lab", 37.000495, -122.062870,
-            color: Colors.blue));
-      }
-
-      // If graduate
-      if (items[majorList.gradDivision.index]) {
-        mapView.addMarker(new Marker(
-            "ga", "Graduate Advising Office", 36.9896204, -122.0649923,
-            color: Colors.yellow));
-        mapView.addMarker(new Marker(
-            "gsh", "Graduate Student Housing", 37.0000333, -122.0642744,
-            color: Colors.yellow));
-      }
-    });
-  }
-
-  void showMap() {
-    // Show the map
-    mapView.show(
-        new MapOptions(
-            mapViewType: MapViewType.normal,
-            showUserLocation: true,
-            initialCameraPosition: new CameraPosition(
-                new Location(37.000369, -122.06323709999998), 18.5),
-            title: "Virtual Tour"),
-        toolbarActions: [new ToolbarAction("Close", 1)]);
-
-    // Set the markers
-    setMarkers(checkedItems);
-
-    // Close when the button is closed
-    mapView.onToolbarAction.listen((id) {
-      if (id == 1) {
-        mapView.dismiss();
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return new FloatingActionButton(
         backgroundColor: Colors.blue,
         tooltip: "Start the tour",
-        child: new Icon(Icons.arrow_forward),
+        child: new Icon(Icons.map),
         onPressed: () {
           if (isValidSet()) {
-            print("Good to go!");
-            showMap();
+            showDialog(
+                context: context,
+                child: new AlertDialog(
+                  title: new Text("Before we start..."),
+                  content: new Text(
+                      "If you'd like to learn more about a selected point of interest, tap the `Guide` button and if you wish to exit the tour simply hit the `Exit` button\n\n"
+                      "If you selected the graduate student points of interest make sure to zoom out until you see both yellow pins!"),
+                  actions: <Widget>[
+                    new FlatButton(
+                      child: new Text("Got it!"),
+                      onPressed: () {
+                        Navigator.pop(context);
+                        map.updateMap(checkedItems);
+                        print("Good to go!");
+                      },
+                    )
+                  ],
+                ));
           } else {
             print("No good!");
             Scaffold.of(context).showSnackBar(new SnackBar(
