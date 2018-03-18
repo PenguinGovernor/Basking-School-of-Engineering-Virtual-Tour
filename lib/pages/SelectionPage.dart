@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bsoe_tour/MapView.dart';
 
-// Helper Enum
 enum majorList {
   gradDivision,
   computerScience,
@@ -9,44 +8,57 @@ enum majorList {
   computerEngineering,
   eletricalEngineering,
   tim,
-  bioEngineering
+  bioEngineering,
+  orgs
 }
 
-// State that will be utilitzed for the body
-final gBodyState = new GlobalKey<SelectionPageBodyState>();
+List<bool> selectedMajors = new List<bool>(majorList.values.length);
 
-// Main Class
-class SelectionPage extends StatelessWidget {
+class SelectionPage extends StatefulWidget {
+  @override
+  _SelectionPageState createState() => new _SelectionPageState();
+}
+
+class _SelectionPageState extends State<SelectionPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
+        title: new Text("Major Directory"),
         backgroundColor: Colors.amber,
-        title: new Text("Major Selection"),
       ),
-      body: new SelectionPageBody(key: gBodyState),
-      floatingActionButton: new SelctionPageFab(),
+      body: new SelectionPageBody(),
+      floatingActionButton: new Fab(),
     );
   }
 }
 
-// SelectionPageBody class and state
-class SelectionPageBody extends StatefulWidget {
-  SelectionPageBody({Key key}) : super(key: key);
-
-  SelectionPageBodyState createState() {
-    var state = new SelectionPageBodyState();
-    state.onLoad();
-    return state;
+class Fab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new FloatingActionButton(
+      child: new Icon(Icons.map, color: Colors.white),
+      onPressed: () {
+        var map = new BsoeMap();
+        map.updateMap(selectedMajors);
+      },
+    );
   }
 }
 
-class SelectionPageBodyState extends State<SelectionPageBody> {
-  var boolList = new List(majorList.values.length);
+class SelectionPageBody extends StatefulWidget {
+  @override
+  _SelectionPageBodyState createState() {
+    var a = new _SelectionPageBodyState();
+    a.initList();
+    return a;
+  }
+}
 
-  void onLoad() {
-    for (var i = 0; i < majorList.values.length; i++) {
-      boolList[i] = false;
+class _SelectionPageBodyState extends State<SelectionPageBody> {
+  initList() {
+    for (int i = 0; i < majorList.values.length; i++) {
+      selectedMajors[i] = false;
     }
   }
 
@@ -54,162 +66,477 @@ class SelectionPageBodyState extends State<SelectionPageBody> {
   Widget build(BuildContext context) {
     return new ListView(
       children: <Widget>[
-        new Column(
-          children: <Widget>[
-            const Text(
-              "\nPlease select your\nmajors and areas of interest:",
-              textAlign: TextAlign.center,
-              textScaleFactor: 1.5,
-            ),
-            new CheckboxListTile(
-              title: new Text("Graduate Division"),
-              activeColor: Colors.amber,
-              secondary: const Icon(Icons.school, color: Colors.blueAccent),
-              value: boolList[majorList.gradDivision.index],
-              onChanged: (value) {
-                setState(() {
-                  boolList[majorList.gradDivision.index] = value;
-                });
-              },
-            ),
-            new CheckboxListTile(
-              title: new Text("Computer Science"),
-              value: boolList[majorList.computerScience.index],
-              activeColor: Colors.amber,
-              secondary: new Icon(Icons.computer, color: Colors.blueAccent),
-              onChanged: (value) {
-                setState(() {
-                  boolList[majorList.computerScience.index] = value;
-                });
-              },
-            ),
-            new CheckboxListTile(
-              title: new Text("CS: Game Design"),
-              value: boolList[majorList.computerSciencGame.index],
-              activeColor: Colors.amber,
-              secondary:
-                  new Icon(Icons.videogame_asset, color: Colors.blueAccent),
-              onChanged: (value) {
-                setState(() {
-                  boolList[majorList.computerSciencGame.index] = value;
-                });
-              },
-            ),
-            new CheckboxListTile(
-              title: new Text("Computer Engineering"),
-              value: boolList[majorList.computerEngineering.index],
-              activeColor: Colors.amber,
-              secondary: new Icon(Icons.computer, color: Colors.blueAccent),
-              onChanged: (value) {
-                setState(() {
-                  boolList[majorList.computerEngineering.index] = value;
-                });
-              },
-            ),
-            new CheckboxListTile(
-              title: new Text("Eletrical Engineering"),
-              value: boolList[majorList.eletricalEngineering.index],
-              activeColor: Colors.amber,
-              secondary: new Icon(Icons.flash_on, color: Colors.blueAccent),
-              onChanged: (value) {
-                setState(() {
-                  boolList[majorList.eletricalEngineering.index] = value;
-                });
-              },
-            ),
-            new CheckboxListTile(
-              title: new Text("Bioengineering"),
-              value: boolList[majorList.bioEngineering.index],
-              activeColor: Colors.amber,
-              secondary:
-                  new Icon(Icons.nature_people, color: Colors.blueAccent),
-              onChanged: (value) {
-                setState(() {
-                  boolList[majorList.bioEngineering.index] = value;
-                });
-              },
-            ),
-            new CheckboxListTile(
-              title: new Text("Technology Information Management"),
-              value: boolList[majorList.tim.index],
-              activeColor: Colors.amber,
-              secondary: new Icon(Icons.work, color: Colors.blueAccent),
-              onChanged: (value) {
-                setState(() {
-                  boolList[majorList.tim.index] = value;
-                });
-              },
-            ),
+        new Text(
+          "\nTouch a room to learn more about it\nPress the map icon to display an interactive map\n\n",
+          textAlign: TextAlign.center,
+          textScaleFactor: 1.2,
+          style: new TextStyle(
+               fontStyle: FontStyle.italic),
+        ),
 
-            // new Text(
-            //   "\nTouch the arrow to start the tour!\n",
-            //   textAlign: TextAlign.center
-            // )
-          ],
-        )
+        // Organazations
+        new Container(
+          alignment: Alignment.centerLeft,
+          child: new Card(
+            child: new Column(
+              children: <Widget>[
+                new ListTile(
+                  title: new Text("Organazations"),
+                  leading: new Icon(
+                    Icons.account_balance,
+                    color: Colors.red,
+                  ),
+                ),
+                new Align(
+                  alignment: Alignment.topLeft,
+                  child: new RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/MesaPage");
+                    },
+                    color: Colors.redAccent,
+                    child: new Text(
+                      "MESA Engineering Program",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(1.0),
+                ),
+                new CheckboxListTile(
+                  title: new Text("Show rooms on map?"),
+                  value: selectedMajors[majorList.orgs.index],
+                  activeColor: Colors.red,
+                  onChanged: (bool state) {
+                    setState(() {
+                      selectedMajors[majorList.orgs.index] = state;
+                    });
+                  },
+                )
+              ],
+            ),
+          ),
+        ),
+        new Padding(padding: new EdgeInsets.all(1.0)),
+
+        // Computer Science
+        new Container(
+          alignment: Alignment.centerLeft,
+          child: new Card(
+            child: new Column(
+              children: <Widget>[
+                new ListTile(
+                  title: new Text("Computer Science"),
+                  leading: new Icon(
+                    Icons.computer,
+                    color: Colors.orange,
+                  ),
+                ),
+                new Align(
+                  alignment: Alignment.topLeft,
+                  child: new RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/LinuxLab");
+                    },
+                    color: Colors.orangeAccent,
+                    child: new Text(
+                      "Linux Lab",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(1.0),
+                ),
+                new Align(
+                  alignment: Alignment.topLeft,
+                  child: new RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/ComputerVision");
+                    },
+                    color: Colors.orangeAccent,
+                    child: new Text(
+                      "Computer Vision Lab",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(1.0),
+                ),
+                new CheckboxListTile(
+                  title: new Text("Show rooms on map?"),
+                  value: selectedMajors[majorList.computerScience.index],
+                  activeColor: Colors.orange,
+                  onChanged: (bool state) {
+                    setState(() {
+                      selectedMajors[majorList.computerScience.index] = state;
+                    });
+                  },
+                )
+              ],
+            ),
+          ),
+        ),
+
+        new Padding(padding: new EdgeInsets.all(1.0)),
+        // CS: GD
+        new Container(
+          alignment: Alignment.centerLeft,
+          child: new Card(
+            child: new Column(
+              children: <Widget>[
+                new ListTile(
+                  title: new Text("Computer Science: Game Design"),
+                  leading: new Icon(
+                    Icons.videogame_asset,
+                    color: Colors.green,
+                  ),
+                ),
+                new Align(
+                  alignment: Alignment.topLeft,
+                  child: new RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/GameDesign");
+                    },
+                    color: Colors.green,
+                    child: new Text(
+                      "Game Design Lab",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(1.0),
+                ),
+                new CheckboxListTile(
+                  title: new Text("Show rooms on map?"),
+                  value: selectedMajors[majorList.computerSciencGame.index],
+                  activeColor: Colors.green,
+                  onChanged: (bool state) {
+                    setState(() {
+                      selectedMajors[majorList.computerSciencGame.index] =
+                          state;
+                    });
+                  },
+                )
+              ],
+            ),
+          ),
+        ),
+        new Padding(padding: new EdgeInsets.all(1.0)),
+        // Computer Engineering
+        new Container(
+          alignment: Alignment.centerLeft,
+          child: new Card(
+            child: new Column(
+              children: <Widget>[
+                new ListTile(
+                  title: new Text("Computer Engineering"),
+                  leading: new Icon(
+                    Icons.computer,
+                    color: Colors.blue,
+                  ),
+                ),
+                new Align(
+                  alignment: Alignment.topLeft,
+                  child: new RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/MechLab");
+                    },
+                    color: Colors.blueAccent,
+                    child: new Text(
+                      "Mechatronics Lab",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(1.0),
+                ),
+                new Align(
+                  alignment: Alignment.topLeft,
+                  child: new RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/ComputerNetworks");
+                    },
+                    color: Colors.blueAccent,
+                    child: new Text(
+                      "Computer Networks Lab",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(1.0),
+                ),
+                new CheckboxListTile(
+                  title: new Text("Show rooms on map?"),
+                  value: selectedMajors[majorList.computerEngineering.index],
+                  activeColor: Colors.blue,
+                  onChanged: (bool state) {
+                    setState(() {
+                      selectedMajors[majorList.computerEngineering.index] =
+                          state;
+                    });
+                  },
+                )
+              ],
+            ),
+          ),
+        ),
+
+        new Padding(padding: new EdgeInsets.all(1.0)),
+
+        // Eltrical Engineering
+        new Container(
+          alignment: Alignment.centerLeft,
+          child: new Card(
+            child: new Column(
+              children: <Widget>[
+                new ListTile(
+                  title: new Text("Electrical Engineering"),
+                  leading: new Icon(
+                    Icons.flash_on,
+                    color: Colors.indigo,
+                  ),
+                ),
+                new Align(
+                  alignment: Alignment.topLeft,
+                  child: new RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/EE101");
+                    },
+                    color: Colors.indigo,
+                    child: new Text(
+                      "EE 101 Lab",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(1.0),
+                ),
+                new Align(
+                  alignment: Alignment.topLeft,
+                  child: new RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/DANSER");
+                    },
+                    color: Colors.indigo,
+                    child: new Text(
+                      "DANSER Lab",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(1.0),
+                ),
+                new Align(
+                  alignment: Alignment.topLeft,
+                  child: new RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/AOL");
+                    },
+                    color: Colors.indigo,
+                    child: new Text(
+                      "Applied Optics Lab",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(1.0),
+                ),
+                new CheckboxListTile(
+                  title: new Text("Show rooms on map?"),
+                  value: selectedMajors[majorList.eletricalEngineering.index],
+                  activeColor: Colors.indigo,
+                  onChanged: (bool state) {
+                    setState(() {
+                      selectedMajors[majorList.eletricalEngineering.index] =
+                          state;
+                    });
+                  },
+                )
+              ],
+            ),
+          ),
+        ),
+
+        // Bio Engineering
+        new Container(
+          alignment: Alignment.centerLeft,
+          child: new Card(
+            child: new Column(
+              children: <Widget>[
+                new ListTile(
+                  title: new Text("Bioengineering"),
+                  leading: new Icon(
+                    Icons.nature_people,
+                    color: Colors.purple,
+                  ),
+                ),
+                new Align(
+                  alignment: Alignment.topLeft,
+                  child: new RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/Nanopore");
+                    },
+                    color: Colors.purple,
+                    child: new Text(
+                      "Nanopore Lab",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(1.0),
+                ),
+                new Align(
+                  alignment: Alignment.topLeft,
+                  child: new RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/CompGenLab");
+                    },
+                    color: Colors.purple,
+                    child: new Text(
+                      "Computational Genomics Lab",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(1.0),
+                ),
+                new Align(
+                  alignment: Alignment.topLeft,
+                  child: new RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/HGI");
+                    },
+                    color: Colors.purple,
+                    child: new Text(
+                      "Human Genomics Institute",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(1.0),
+                ),
+                new CheckboxListTile(
+                  title: new Text("Show rooms on map?"),
+                  value: selectedMajors[majorList.bioEngineering.index],
+                  activeColor: Colors.purple,
+                  onChanged: (bool state) {
+                    setState(() {
+                      selectedMajors[majorList.bioEngineering.index] = state;
+                    });
+                  },
+                )
+              ],
+            ),
+          ),
+        ),
+
+        new Padding(padding: new EdgeInsets.all(1.0)),
+        // Graduate
+        new Container(
+          alignment: Alignment.centerLeft,
+          child: new Card(
+            child: new Column(
+              children: <Widget>[
+                new ListTile(
+                  title: new Text("Graduate Division"),
+                  subtitle:
+                      new Text("You may have to zoom out to see these pins"),
+                  leading: new Icon(
+                    Icons.school,
+                    color: Colors.deepPurple,
+                  ),
+                ),
+                new Align(
+                  alignment: Alignment.topLeft,
+                  child: new RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/GraduateHousing");
+                    },
+                    color: Colors.deepPurple,
+                    child: new Text(
+                      "Graduate Student Housing",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(1.0),
+                ),
+                new Align(
+                  alignment: Alignment.topLeft,
+                  child: new RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/GraduateAdvising");
+                    },
+                    color: Colors.deepPurple,
+                    child: new Text(
+                      "Graduate Advising Office",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(1.0),
+                ),
+                new CheckboxListTile(
+                  title: new Text("Show rooms on map?"),
+                  value: selectedMajors[majorList.gradDivision.index],
+                  activeColor: Colors.deepPurple,
+                  onChanged: (bool state) {
+                    setState(() {
+                      selectedMajors[majorList.gradDivision.index] = state;
+                    });
+                  },
+                )
+              ],
+            ),
+          ),
+        ),
+
+        new Padding(padding: new EdgeInsets.all(1.0)),
+        // tim
+        new Container(
+          alignment: Alignment.centerLeft,
+          child: new Card(
+            child: new Column(
+              children: <Widget>[
+                new ListTile(
+                  title: new Text("Technology Information Management"),
+                  subtitle: new Text("This section contains no rooms"),
+                  leading: new Icon(
+                    Icons.work,
+                    color: Colors.teal,
+                  ),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.all(1.0),
+                ),
+                new CheckboxListTile(
+                  title: new Text("Show rooms on map?"),
+                  value: selectedMajors[majorList.tim.index],
+                  activeColor: Colors.teal,
+                  onChanged: (bool state) {
+                    setState(() {
+                      selectedMajors[majorList.tim.index] = state;
+                    });
+                  },
+                )
+              ],
+            ),
+          ),
+        ),
       ],
     );
-  }
-}
-
-class SelctionPageFab extends StatefulWidget {
-  SelectionPageFabState createState() {
-    var state = new SelectionPageFabState();
-    state.checkedItems = gBodyState.currentState.boolList;
-    return state;
-  }
-}
-
-class SelectionPageFabState extends State<SelctionPageFab> {
-  MaterialColor fabColor = Colors.blueGrey;
-  List checkedItems;
-  BsoeMap map = new BsoeMap();
-
-  bool isValidSet() {
-    for (var i = 0; i < checkedItems.length; i++) {
-      if (checkedItems[i] == true) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return new FloatingActionButton(
-        backgroundColor: Colors.blue,
-        tooltip: "Start the tour",
-        child: new Icon(Icons.map),
-        onPressed: () {
-          if (isValidSet()) {
-            showDialog(
-                context: context,
-                child: new AlertDialog(
-                  title: new Text("Before we start..."),
-                  content: new Text(
-                      "If you'd like to learn more about a selected point of interest, tap the `Guide` button and if you wish to exit the tour simply hit the `Exit` button\n\n"
-                      "If you selected the graduate student points of interest make sure to zoom out until you see both yellow pins!"),
-                  actions: <Widget>[
-                    new FlatButton(
-                      child: new Text("Got it!"),
-                      onPressed: () {
-                        Navigator.pop(context);
-                        map.updateMap(checkedItems);
-                        print("Good to go!");
-                      },
-                    )
-                  ],
-                ));
-          } else {
-            print("No good!");
-            Scaffold.of(context).showSnackBar(new SnackBar(
-                  action: new SnackBarAction(
-                    label: "HIDE",
-                    onPressed: () => Scaffold.of(context).hideCurrentSnackBar(),
-                  ),
-                  content: new Text("Please select one or more majors!"),
-                ));
-          }
-        });
   }
 }
