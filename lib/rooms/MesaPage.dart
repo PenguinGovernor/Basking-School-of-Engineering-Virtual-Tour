@@ -31,7 +31,7 @@ class MesaPageBody extends StatelessWidget {
               child: new Column(
                 children: <Widget>[
                   new ListTile(
-                    leading: new Icon(Icons.computer, color: Colors.red),
+                    leading: new Icon(Icons.account_balance, color: Colors.red),
                     title: new Text("Organazations - Mesa Engineering Program"),
                     subtitle: new Text("Baskin Engineering 1 Room 399"),
                   )
