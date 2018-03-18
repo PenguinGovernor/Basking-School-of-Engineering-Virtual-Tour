@@ -31,6 +31,7 @@ flutter:
     - images/linuxlab.jpg
     - images/computervision.jpg
     - images/gamedesign.jpg
+    - images/mech.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
