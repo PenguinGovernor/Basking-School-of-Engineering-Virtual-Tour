@@ -16,9 +16,13 @@ import './rooms/LinuxLab.dart';
 import './rooms/MechLab.dart';
 import './rooms/MesaPage.dart';
 import './rooms/Nanopore.dart';
+import './key.dart';
+
+
 
 void main() {
-  MapView.setApiKey("AIzaSyAGPwHFwynyK8RIkLdkZlNpNOS8jAyYexc");
+  var preKey = new PenguinKey();
+  MapView.setApiKey(preKey.grabKey());
   runApp(new BaskinTour());
 }
 
