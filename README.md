@@ -26,6 +26,7 @@ Slug tour is an open-sourced appliation meant to introduce new Banana Slugs to t
 ## Todos
 1. See issues
 2. Get screenshots from actual ios device
+3. Generate App Icons
 
 ## More about Flutter
 
