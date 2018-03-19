@@ -47,9 +47,6 @@ class BaskinTour extends StatelessWidget {
         "/HGI": (BuildContext context) => new HGI(),
         "/GraduateHousing": (BuildContext context) => new GraduateHousing(),
         "/GraduateAdvising": (BuildContext context) => new GraduateAdvising(),
-
-
-        
       },
     );
   }
