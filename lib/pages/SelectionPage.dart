@@ -67,7 +67,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
     return new ListView(
       children: <Widget>[
         new Text(
-          "\nSelect a point of interest to learn more about it\nPress the map icon to display an interactive map along with any sections you have cheked\n\n",
+          "\nSelect a point of interest to learn more about BSOE Labs and Facilities\nPress the map icon to display an interactive map along with any sections you have selected\n\n",
           textAlign: TextAlign.center,
           textScaleFactor: 1.2,
           style: new TextStyle(
