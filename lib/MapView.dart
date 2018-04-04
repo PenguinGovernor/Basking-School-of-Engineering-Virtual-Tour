@@ -96,13 +96,13 @@ class BsoeMap {
     if (items[majorList.bioEngineering.index]) {
       customMapView.addMarker(new Marker(
           "cgl", "Computational Genomics Lab", 37.000901, -122.063175,
-          color: Colors.teal));
+          color: Colors.purple));
       customMapView.addMarker(new Marker(
           "hgi", "Human Genomics Institute", 37.000919, -122.063080,
-          color: Colors.teal));
+          color: Colors.purple));
       customMapView.addMarker(new Marker(
           "npl", "Nanopore Lab", 37.000309, -122.063426,
-          color: Colors.teal));
+          color: Colors.purple));
     }
   }
 
