@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bsoe_tour/MapView.dart';
+import 'package:flutter/cupertino.dart';
 
 enum majorList {
   gradDivision,
@@ -70,8 +71,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
           "\nSelect a point of interest to learn more about BSOE Labs and Facilities\nPress the map icon to display an interactive map along with any sections you have selected\n\n",
           textAlign: TextAlign.center,
           textScaleFactor: 1.2,
-          style: new TextStyle(
-               fontStyle: FontStyle.italic),
+          style: new TextStyle(fontStyle: FontStyle.italic),
         ),
 
         // Organazations
@@ -89,7 +89,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Align(
                   alignment: Alignment.topLeft,
-                  child: new RaisedButton(
+                  child: new CupertinoButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/MesaPage");
                     },
@@ -103,15 +103,19 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
-                new CheckboxListTile(
-                  title: new Text("Show rooms on map?"),
-                  value: selectedMajors[majorList.orgs.index],
-                  activeColor: Colors.red,
-                  onChanged: (bool state) {
-                    setState(() {
-                      selectedMajors[majorList.orgs.index] = state;
-                    });
-                  },
+                new MergeSemantics(
+                  child: new ListTile(
+                    title: new Text("Show rooms on map?"),
+                    trailing: new CupertinoSwitch(
+                      value: selectedMajors[majorList.orgs.index],
+                      activeColor: Colors.red,
+                      onChanged: (bool state) {
+                        setState(() {
+                          selectedMajors[majorList.orgs.index] = state;
+                        });
+                      },
+                    ),
+                  ),
                 )
               ],
             ),
@@ -134,7 +138,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Align(
                   alignment: Alignment.topLeft,
-                  child: new RaisedButton(
+                  child: new CupertinoButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/LinuxLab");
                     },
@@ -150,7 +154,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Align(
                   alignment: Alignment.topLeft,
-                  child: new RaisedButton(
+                  child: new CupertinoButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/ComputerVision");
                     },
@@ -164,15 +168,20 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
-                new CheckboxListTile(
-                  title: new Text("Show rooms on map?"),
-                  value: selectedMajors[majorList.computerScience.index],
-                  activeColor: Colors.orange,
-                  onChanged: (bool state) {
-                    setState(() {
-                      selectedMajors[majorList.computerScience.index] = state;
-                    });
-                  },
+                new MergeSemantics(
+                  child: new ListTile(
+                    title: new Text("Show rooms on map?"),
+                    trailing: new CupertinoSwitch(
+                      value: selectedMajors[majorList.computerScience.index],
+                      activeColor: Colors.orange,
+                      onChanged: (bool state) {
+                        setState(() {
+                          selectedMajors[majorList.computerScience.index] =
+                              state;
+                        });
+                      },
+                    ),
+                  ),
                 )
               ],
             ),
@@ -195,7 +204,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Align(
                   alignment: Alignment.topLeft,
-                  child: new RaisedButton(
+                  child: new CupertinoButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/GameDesign");
                     },
@@ -209,16 +218,20 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
-                new CheckboxListTile(
-                  title: new Text("Show rooms on map?"),
-                  value: selectedMajors[majorList.computerSciencGame.index],
-                  activeColor: Colors.green,
-                  onChanged: (bool state) {
-                    setState(() {
-                      selectedMajors[majorList.computerSciencGame.index] =
-                          state;
-                    });
-                  },
+              new MergeSemantics(
+                  child: new ListTile(
+                    title: new Text("Show rooms on map?"),
+                    trailing: new CupertinoSwitch(
+                      value: selectedMajors[majorList.computerSciencGame.index],
+                      activeColor: Colors.green,
+                      onChanged: (bool state) {
+                        setState(() {
+                          selectedMajors[majorList.computerSciencGame.index] =
+                              state;
+                        });
+                      },
+                    ),
+                  ),
                 )
               ],
             ),
@@ -240,7 +253,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Align(
                   alignment: Alignment.topLeft,
-                  child: new RaisedButton(
+                  child: new CupertinoButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/MechLab");
                     },
@@ -256,7 +269,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Align(
                   alignment: Alignment.topLeft,
-                  child: new RaisedButton(
+                  child: new CupertinoButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/ComputerNetworks");
                     },
@@ -270,16 +283,20 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
-                new CheckboxListTile(
-                  title: new Text("Show rooms on map?"),
-                  value: selectedMajors[majorList.computerEngineering.index],
-                  activeColor: Colors.blue,
-                  onChanged: (bool state) {
-                    setState(() {
-                      selectedMajors[majorList.computerEngineering.index] =
-                          state;
-                    });
-                  },
+                new MergeSemantics(
+                  child: new ListTile(
+                    title: new Text("Show rooms on map?"),
+                    trailing: new CupertinoSwitch(
+                      value: selectedMajors[majorList.computerEngineering.index],
+                      activeColor: Colors.blue,
+                      onChanged: (bool state) {
+                        setState(() {
+                          selectedMajors[majorList.computerEngineering.index] =
+                              state;
+                        });
+                      },
+                    ),
+                  ),
                 )
               ],
             ),
@@ -303,7 +320,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Align(
                   alignment: Alignment.topLeft,
-                  child: new RaisedButton(
+                  child: new CupertinoButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/EE101");
                     },
@@ -319,7 +336,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Align(
                   alignment: Alignment.topLeft,
-                  child: new RaisedButton(
+                  child: new CupertinoButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/DANSER");
                     },
@@ -335,7 +352,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Align(
                   alignment: Alignment.topLeft,
-                  child: new RaisedButton(
+                  child: new CupertinoButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/AOL");
                     },
@@ -349,16 +366,20 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
-                new CheckboxListTile(
-                  title: new Text("Show rooms on map?"),
-                  value: selectedMajors[majorList.eletricalEngineering.index],
-                  activeColor: Colors.indigo,
-                  onChanged: (bool state) {
-                    setState(() {
-                      selectedMajors[majorList.eletricalEngineering.index] =
-                          state;
-                    });
-                  },
+                new MergeSemantics(
+                  child: new ListTile(
+                    title: new Text("Show rooms on map?"),
+                    trailing: new CupertinoSwitch(
+                      value: selectedMajors[majorList.eletricalEngineering.index],
+                      activeColor: Colors.indigo,
+                      onChanged: (bool state) {
+                        setState(() {
+                          selectedMajors[majorList.eletricalEngineering.index] =
+                              state;
+                        });
+                      },
+                    ),
+                  ),
                 )
               ],
             ),
@@ -380,7 +401,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Align(
                   alignment: Alignment.topLeft,
-                  child: new RaisedButton(
+                  child: new CupertinoButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/Nanopore");
                     },
@@ -396,7 +417,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Align(
                   alignment: Alignment.topLeft,
-                  child: new RaisedButton(
+                  child: new CupertinoButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/CompGenLab");
                     },
@@ -412,7 +433,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Align(
                   alignment: Alignment.topLeft,
-                  child: new RaisedButton(
+                  child: new CupertinoButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/HGI");
                     },
@@ -426,15 +447,20 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
-                new CheckboxListTile(
-                  title: new Text("Show rooms on map?"),
-                  value: selectedMajors[majorList.bioEngineering.index],
-                  activeColor: Colors.purple,
-                  onChanged: (bool state) {
-                    setState(() {
-                      selectedMajors[majorList.bioEngineering.index] = state;
-                    });
-                  },
+          new MergeSemantics(
+                  child: new ListTile(
+                    title: new Text("Show rooms on map?"),
+                    trailing: new CupertinoSwitch(
+                      value: selectedMajors[majorList.bioEngineering.index],
+                      activeColor: Colors.purple,
+                      onChanged: (bool state) {
+                        setState(() {
+                          selectedMajors[majorList.bioEngineering.index] =
+                              state;
+                        });
+                      },
+                    ),
+                  ),
                 )
               ],
             ),
@@ -459,7 +485,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Align(
                   alignment: Alignment.topLeft,
-                  child: new RaisedButton(
+                  child: new CupertinoButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/GraduateHousing");
                     },
@@ -475,7 +501,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Align(
                   alignment: Alignment.topLeft,
-                  child: new RaisedButton(
+                  child: new CupertinoButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/GraduateAdvising");
                     },
@@ -489,15 +515,20 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
-                new CheckboxListTile(
-                  title: new Text("Show rooms on map?"),
-                  value: selectedMajors[majorList.gradDivision.index],
-                  activeColor: Colors.deepPurple,
-                  onChanged: (bool state) {
-                    setState(() {
-                      selectedMajors[majorList.gradDivision.index] = state;
-                    });
-                  },
+           new MergeSemantics(
+                  child: new ListTile(
+                    title: new Text("Show rooms on map?"),
+                    trailing: new CupertinoSwitch(
+                      value: selectedMajors[majorList.gradDivision.index],
+                      activeColor: Colors.deepPurple,
+                      onChanged: (bool state) {
+                        setState(() {
+                          selectedMajors[majorList.gradDivision.index] =
+                              state;
+                        });
+                      },
+                    ),
+                  ),
                 )
               ],
             ),
@@ -521,16 +552,6 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
-                ),
-                new CheckboxListTile(
-                  title: new Text("Show rooms on map?"),
-                  value: selectedMajors[majorList.tim.index],
-                  activeColor: Colors.teal,
-                  onChanged: (bool state) {
-                    setState(() {
-                      selectedMajors[majorList.tim.index] = state;
-                    });
-                  },
                 )
               ],
             ),
