@@ -21,9 +21,8 @@ class HomePageBody extends StatelessWidget
   Widget build(BuildContext context)
   {
     const String _info = "\nWe will show you a wide variety of research labs, club activities, and instructional\n"
-    "labs.\n\n"
-     "Click the arrow to get the tour started!";
-     
+    "labs.\n\n";
+
     return new ListView(
       children: <Widget>[
         new Column(
@@ -60,12 +59,12 @@ class HomePageBody extends StatelessWidget
             new Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                new IconButton(
-                  icon: new Icon(Icons.arrow_forward, color: Colors.blueAccent),
+                new RaisedButton(
+                  color: Colors.blue,
+                  child: new Text("CLICK TO START", style: new TextStyle(color: Colors.white),),
                   onPressed: () {
                     Navigator.of(context).pushNamed("/SelectionPage");
                   },
-                  iconSize: 60.0,
                 )
               ],
             )
