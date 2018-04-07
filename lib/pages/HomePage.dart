@@ -61,7 +61,7 @@ class HomePageBody extends StatelessWidget
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 new CupertinoButton(
-                  child: new Text("CLICK TO START"),
+                  child: new Text("TAP TO START"),
                   color: CupertinoColors.activeBlue,
                   onPressed: () {
                     Navigator.of(context).pushNamed("/SelectionPage");
