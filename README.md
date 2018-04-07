@@ -1,33 +1,35 @@
 # Slug Tour
 
-Slug tour is an open-sourced appliation meant to introduce new Banana Slugs to the wonderful world of Baskin Engineering. 🐌🍌 
+Slug tour is an open-sourced application meant to introduce new Banana Slugs to the wonderful world of Baskin Engineering. 🐌🍌 
 
 ## Screenshots
 |   Welcome (iOS)	| Welcome (Android)  	|
 |:-:	|:-:	|
-|   ![alt](./Screenshots/1-ios-welcome.png)	|   ![alt](./Screenshots/1-android-welcome.jpg)	|
+|   ![alt](./Screenshots/i-1.PNG)	|   ![alt](./Screenshots/a-1.jpg)	|
 
 |   Selection (iOS)	| Selection (Android)  	|
 |:-:	|:-:	|
-|   ![alt](./Screenshots/2-ios-select.png)	|   ![alt](./Screenshots/2-android-select.jpg)	|
+|   ![alt](./Screenshots/i-2.PNG)	|   ![alt](./Screenshots/a-2.jpg)	|
 
 |   Selection-2 (iOS)	| Selection-2 (Android)  	|
 |:-:	|:-:	|
-|   ![alt](./Screenshots/3-ios-select.png)	|   ![alt](./Screenshots/3-android-select.jpg)	|
+|   ![alt](./Screenshots/i-3.PNG)	|   ![alt](./Screenshots/a-3.jpg)	|
 
 |   Room (iOS)	| Room (Android)  	|
 |:-:	|:-:	|
-|   ![alt](./Screenshots/4-ios-rooom.png)	|   ![alt](./Screenshots/4-android-room.jpg)	|
+|   ![alt](./Screenshots/i-4.PNG)	|   ![alt](./Screenshots/a-4.jpg)	|
 
 |   Map (iOS)	| Map (Android)  	|
 |:-:	|:-:	|
-|   ![alt](./Screenshots/5-ios-map.png)	|   ![alt](./Screenshots/5-android-map.jpg)	|
+|   ![alt](./Screenshots/i-5.PNG)	|   ![alt](./Screenshots/a-5.jpg)	|
+
+|   Map-2 (iOS)	| Map-2 (Android)  	|
+|:-:	|:-:	|
+|   ![alt](./Screenshots/i-6.PNG)	|   ![alt](./Screenshots/a-6.jpg)	|
 
 ## Todos
 1. See issues
-2. Get screenshots from actual ios device
-3. Generate App Icons
-
+2. Push to play-store
 ## More about Flutter
 
 For help getting started with Flutter, view our online
