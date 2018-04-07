@@ -34,7 +34,10 @@ Slug tour is an open-sourced application meant to introduce new Banana Slugs to 
 ## Todos
 1. See issues
 2. Push to play-store
-## More about Flutter
 
+## More information
+The master branch on this repo contains the iOS related code for Slug Tour, whereas the android branch is dedicated for the Android related code.
+
+## More about Flutter
 For help getting started with Flutter, view our online
 [documentation](https://flutter.io/).
