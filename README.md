@@ -3,6 +3,10 @@
 Slug tour is an open-sourced application meant to introduce new Banana Slugs to the wonderful world of Baskin Engineering. 🐌🍌 
 
 ## Screenshots
+|   Launch Icon (iOS)	| Launch Icon (Android)  	|
+|:-:	|:-:	|
+|   ![alt](./Screenshots/i-0.PNG)	|   ![alt](./Screenshots/a-0.jpg)	|
+
 |   Welcome (iOS)	| Welcome (Android)  	|
 |:-:	|:-:	|
 |   ![alt](./Screenshots/i-1.PNG)	|   ![alt](./Screenshots/a-1.jpg)	|
