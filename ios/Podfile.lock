@@ -12,13 +12,13 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - Flutter (from `Pods/.symlinks/flutter/ios`)
+  - Flutter (from `Pods/.symlinks/flutter/ios-release`)
   - map_view (from `Pods/.symlinks/plugins/flutter_google_map_view-fabac04aea6da08112bb040ef9a1a4a5a3c5a9f9/ios`)
   - share (from `Pods/.symlinks/plugins/share/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
-    :path: Pods/.symlinks/flutter/ios
+    :path: Pods/.symlinks/flutter/ios-release
   map_view:
     :path: Pods/.symlinks/plugins/flutter_google_map_view-fabac04aea6da08112bb040ef9a1a4a5a3c5a9f9/ios
   share:
