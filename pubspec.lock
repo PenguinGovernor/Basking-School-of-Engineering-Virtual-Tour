@@ -107,9 +107,11 @@ packages:
   map_view:
     dependency: "direct main"
     description:
-      name: map_view
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: fabac04aea6da08112bb040ef9a1a4a5a3c5a9f9
+      url: "git://github.com/apptreesoftware/flutter_google_map_view.git"
+    source: git
     version: "0.0.10"
   matcher:
     dependency: transitive
@@ -149,10 +151,12 @@ packages:
   share:
     dependency: "direct main"
     description:
-      name: share
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.0"
+      path: "packages/share/"
+      ref: HEAD
+      resolved-ref: "6b5e6314bb9ae9acf2b1da3d891ae72aa3f76413"
+      url: "git://github.com/flutter/plugins.git"
+    source: git
+    version: "0.5.0"
   sky_engine:
     dependency: transitive
     description: flutter

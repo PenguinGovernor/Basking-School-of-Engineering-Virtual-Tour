@@ -28,7 +28,7 @@ class Room extends StatelessWidget {
             icon: _isAndroid ? new Icon(Icons.share, color: Colors.white,) : new Icon(CupertinoIcons.share, color: Colors.white),
             color: Colors.white,
             onPressed: () {
-              share("Checkout the $_roomName on Google Maps!\n$_gmapLink");
+              Share.share("Checkout the $_roomName on Google Maps!\n$_gmapLink");
             },
           )
         ],
