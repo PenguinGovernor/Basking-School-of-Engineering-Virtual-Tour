@@ -2,8 +2,7 @@ import 'package:bsoe_tour/generic_room.dart';
 import 'package:flutter/material.dart';
 
 class MesaPage extends StatelessWidget {
-
-    final _desc =
+  final _desc =
       "The MESA Engineering Program, also known as the Multicultural Engineering Program at the University of California Santa Cruz campus, is the university level component of the statewide Mathematics, Engineering, Science Achievement (MESA) - a program of the University of California Office of the President."
       "\n\nAt UC Santa Cruz, MEP is supported by the Baskin School of Engineering with its goal to promote diversity and facilitate the retention and graduation of a diverse population of students, especially groups which continue to remain the most underrepresented in engineering studies. The program received the 2004 UC Santa Cruz Excellence Through Diversity Award which is presented to programs or individuals for efforts which promote a diverse and inclusive environment."
       "\n\nThe School of Engineering (SOE) strives to maintain an environment that stimulates excellence in scholarship and service along with a commitment to diversity through the coordinated efforts and services of the Multicultural Engineering Program (MEP). Also known as the MESA Engineering Program, MEP is the university level component of the statewide system Mathematics, Engineering, Science Achievement (MESA) program of the University of California Office of the President."
@@ -12,7 +11,15 @@ class MesaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Room(false,"Mesa Engineering Program", Colors.red, "Baskin Engineering 1 Room 399", "Organazations", _desc, "https://goo.gl/maps/ap9muZyQMEB2", Icons.account_balance,"images/mep.jpg");
+    return new Room(
+        isAndroid: false,
+        roomName: "Mesa Engineering Program",
+        color: Colors.red,
+        roomNumber: "Baskin Engineering 1 Room 399",
+        category: "Organazations",
+        desc: _desc,
+        gmapLink: "https://goo.gl/maps/ap9muZyQMEB2",
+        icon: Icons.account_balance,
+        image: "images/mep.jpg");
   }
-
 }
