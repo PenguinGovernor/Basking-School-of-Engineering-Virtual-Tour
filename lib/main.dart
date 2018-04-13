@@ -30,6 +30,7 @@ class BaskinTour extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      title: "Slug Tour",
       home: new HomePage(),
       routes: <String, WidgetBuilder>{
         "/SelectionPage": (BuildContext context) => new SelectionPage(),
