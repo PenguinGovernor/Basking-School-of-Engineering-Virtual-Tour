@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:share/share.dart';
+import 'package:flutter_web_browser/flutter_web_browser.dart';
 
 class Room extends StatelessWidget {
   final bool isAndroid;
@@ -12,9 +13,11 @@ class Room extends StatelessWidget {
   final String roomNumber;
   final String desc;
   final String image;
+  final String webViewUrl;
 
   Room(
-      {this.isAndroid,
+      {this.webViewUrl,
+      this.isAndroid,
       this.roomName,
       this.color,
       this.roomNumber,
@@ -67,7 +70,28 @@ class Room extends StatelessWidget {
                     "$desc",
                   )
                 ],
-              ))
+              )),
+          new Container(
+              padding: new EdgeInsets.all(10.0),
+              child: isAndroid
+                  ? new RaisedButton(
+                      color: this.color,
+                      child: new Text("TAP FOR 360 VIEW"),
+                      onPressed: () {
+                        FlutterWebBrowser.openWebPage(
+                            url: this.webViewUrl,
+                            androidToolbarColor: this.color);
+                      },
+                    )
+                  : new CupertinoButton(
+                      color: this.color,
+                      child: new Text("TAP FOR 360 VIEW"),
+                      onPressed: () {
+                        FlutterWebBrowser.openWebPage(
+                            url: this.webViewUrl,
+                            androidToolbarColor: this.color);
+                      },
+                    ))
         ],
       ),
     );

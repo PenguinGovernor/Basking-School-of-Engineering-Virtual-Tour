@@ -1,5 +1,7 @@
 PODS:
   - Flutter (1.0.0)
+  - flutter_web_browser (0.0.1):
+    - Flutter
   - GoogleMaps (2.5.0):
     - GoogleMaps/Maps (= 2.5.0)
   - GoogleMaps/Base (2.5.0)
@@ -13,12 +15,15 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `Pods/.symlinks/flutter/ios`)
+  - flutter_web_browser (from `Pods/.symlinks/plugins/flutter_web_browser-ee443eb14097935d9fa88902cc5f1dedbe44a195/ios`)
   - map_view (from `Pods/.symlinks/plugins/flutter_google_map_view-fabac04aea6da08112bb040ef9a1a4a5a3c5a9f9/ios`)
   - share (from `Pods/.symlinks/plugins/share/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Pods/.symlinks/flutter/ios
+  flutter_web_browser:
+    :path: Pods/.symlinks/plugins/flutter_web_browser-ee443eb14097935d9fa88902cc5f1dedbe44a195/ios
   map_view:
     :path: Pods/.symlinks/plugins/flutter_google_map_view-fabac04aea6da08112bb040ef9a1a4a5a3c5a9f9/ios
   share:
@@ -26,6 +31,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
+  flutter_web_browser: 6a716fdf08f528f7c527eeae1fef13680172bb81
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   map_view: da5875d2bc7b2871e4b7ed3e9e8e4509fc62d7bd
   share: 8d04605548e55f7ce4ebb7b3e933f3c85028c9cf
