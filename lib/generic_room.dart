@@ -37,7 +37,7 @@ class Room extends StatelessWidget {
         title: new Text(roomName),
         actions: <Widget>[
           new IconButton(
-            icon: isAndroid
+            icon: Theme.of(context).platform == TargetPlatform.android
                 ? new Icon(
                     Icons.share,
                     color: Colors.white,
@@ -75,10 +75,14 @@ class Room extends StatelessWidget {
               )),
           new Container(
               padding: new EdgeInsets.all(10.0),
-              child: isAndroid
+              child: Theme.of(context).platform == TargetPlatform.android
                   ? new RaisedButton(
                       color: this.color,
-                      child: buttonText == null ? new Text("TAP TO LEARN MORE") : new Text(buttonText),
+                      child: buttonText == null
+                          ? new Text("TAP TO LEARN MORE",
+                              style: new TextStyle(color: Colors.white))
+                          : new Text(buttonText,
+                              style: new TextStyle(color: Colors.white)),
                       onPressed: () {
                         if (this.webViewUrl == null) {
                           FlutterWebBrowser.openWebPage(
@@ -93,7 +97,9 @@ class Room extends StatelessWidget {
                     )
                   : new CupertinoButton(
                       color: this.color,
-                      child: buttonText == null ? new Text("TAP TO LEARN MORE") : new Text(buttonText),
+                      child: buttonText == null
+                          ? new Text("TAP TO LEARN MORE")
+                          : new Text(buttonText),
                       onPressed: () {
                         if (this.webViewUrl == null) {
                           FlutterWebBrowser.openWebPage(

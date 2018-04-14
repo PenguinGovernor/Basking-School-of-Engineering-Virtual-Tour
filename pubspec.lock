@@ -14,7 +14,7 @@ packages:
       name: args
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.4.1"
+    version: "1.4.2"
   browser:
     dependency: transitive
     description:
@@ -56,7 +56,7 @@ packages:
       name: cupertino_icons
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.1"
+    version: "0.1.2"
   dart_config:
     dependency: transitive
     description:
@@ -107,7 +107,7 @@ packages:
       name: matcher
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.1+4"
+    version: "0.12.2"
   meta:
     dependency: transitive
     description:
@@ -135,13 +135,13 @@ packages:
       name: quiver
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.25.0"
+    version: "0.29.0+1"
   share:
     dependency: "direct main"
     description:
       path: "packages/share/"
       ref: HEAD
-      resolved-ref: "6b5e6314bb9ae9acf2b1da3d891ae72aa3f76413"
+      resolved-ref: "8eccba4ad21efd9b96082a2968839507b131bc8e"
       url: "git://github.com/flutter/plugins.git"
     source: git
     version: "0.5.0"
@@ -191,7 +191,7 @@ packages:
       name: uri
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.11.1"
+    version: "0.11.2"
   utf:
     dependency: transitive
     description:

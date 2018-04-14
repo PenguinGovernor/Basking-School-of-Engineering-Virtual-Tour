@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bsoe_tour/MapView.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:bsoe_tour/generic_button.dart';
 
 enum majorList {
   gradDivision,
@@ -88,18 +89,12 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                   ),
                 ),
                 new Align(
-                  alignment: Alignment.topLeft,
-                  child: new CupertinoButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/MesaPage");
-                    },
-                    color: Colors.redAccent,
-                    child: new Text(
-                      "MESA Engineering Program",
-                      style: new TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: new SlugButton(
+                      buttonColor: Colors.red,
+                      text: "MESA Engineering Program",
+                      routeName: "/MesaPage",
+                    )),
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
@@ -137,34 +132,22 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                   ),
                 ),
                 new Align(
-                  alignment: Alignment.topLeft,
-                  child: new CupertinoButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/LinuxLab");
-                    },
-                    color: Colors.orangeAccent,
-                    child: new Text(
-                      "Linux Lab",
-                      style: new TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: new SlugButton(
+                      routeName: "/LinuxLab",
+                      buttonColor: Colors.orange,
+                      text: "Linux Lab",
+                    )),
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
                 new Align(
-                  alignment: Alignment.topLeft,
-                  child: new CupertinoButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/ComputerVision");
-                    },
-                    color: Colors.orangeAccent,
-                    child: new Text(
-                      "Computer Vision Lab",
-                      style: new TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: new SlugButton(
+                      routeName: "/ComputerVision",
+                      text: "Computer Vision Lab",
+                      buttonColor: Colors.orange,
+                    )),
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
@@ -203,22 +186,16 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                   ),
                 ),
                 new Align(
-                  alignment: Alignment.topLeft,
-                  child: new CupertinoButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/GameDesign");
-                    },
-                    color: Colors.green,
-                    child: new Text(
-                      "Game Design Lab",
-                      style: new TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: new SlugButton(
+                      text: "Game Design Lab",
+                      routeName: "/GameDesign",
+                      buttonColor: Colors.green,
+                    )),
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
-              new MergeSemantics(
+                new MergeSemantics(
                   child: new ListTile(
                     title: new Text("Show rooms on map?"),
                     trailing: new CupertinoSwitch(
@@ -252,34 +229,22 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                   ),
                 ),
                 new Align(
-                  alignment: Alignment.topLeft,
-                  child: new CupertinoButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/MechLab");
-                    },
-                    color: Colors.blueAccent,
-                    child: new Text(
-                      "Mechatronics Lab",
-                      style: new TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: new SlugButton(
+                      routeName: "/MechLab",
+                      buttonColor: Colors.blueAccent,
+                      text: "Mechatronics Lab",
+                    )),
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
                 new Align(
-                  alignment: Alignment.topLeft,
-                  child: new CupertinoButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/ComputerNetworks");
-                    },
-                    color: Colors.blueAccent,
-                    child: new Text(
-                      "Computer Networks Lab",
-                      style: new TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: new SlugButton(
+                      routeName: "/ComputerNetworks",
+                      buttonColor: Colors.blueAccent,
+                      text: "Computer Networks Lab",
+                    )),
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
@@ -287,7 +252,8 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                   child: new ListTile(
                     title: new Text("Show rooms on map?"),
                     trailing: new CupertinoSwitch(
-                      value: selectedMajors[majorList.computerEngineering.index],
+                      value:
+                          selectedMajors[majorList.computerEngineering.index],
                       activeColor: Colors.blue,
                       onChanged: (bool state) {
                         setState(() {
@@ -319,50 +285,32 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                   ),
                 ),
                 new Align(
-                  alignment: Alignment.topLeft,
-                  child: new CupertinoButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/EE101");
-                    },
-                    color: Colors.indigo,
-                    child: new Text(
-                      "EE 101 Lab",
-                      style: new TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: new SlugButton(
+                      routeName: "/EE101",
+                      buttonColor: Colors.indigo,
+                      text: "EE 101 Lab",
+                    )),
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
                 new Align(
-                  alignment: Alignment.topLeft,
-                  child: new CupertinoButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/DANSER");
-                    },
-                    color: Colors.indigo,
-                    child: new Text(
-                      "DANSER Lab",
-                      style: new TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: new SlugButton(
+                      routeName: "/DANSER",
+                      buttonColor: Colors.indigo,
+                      text: "DANSER Lab",
+                    )),
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
                 new Align(
-                  alignment: Alignment.topLeft,
-                  child: new CupertinoButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/AOL");
-                    },
-                    color: Colors.indigo,
-                    child: new Text(
-                      "Applied Optics Lab",
-                      style: new TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: new SlugButton(
+                      routeName: "/AOL",
+                      buttonColor: Colors.indigo,
+                      text: "Applied Optics Lab",
+                    )),
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
@@ -370,7 +318,8 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                   child: new ListTile(
                     title: new Text("Show rooms on map?"),
                     trailing: new CupertinoSwitch(
-                      value: selectedMajors[majorList.eletricalEngineering.index],
+                      value:
+                          selectedMajors[majorList.eletricalEngineering.index],
                       activeColor: Colors.indigo,
                       onChanged: (bool state) {
                         setState(() {
@@ -401,53 +350,36 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                 ),
                 new Align(
                   alignment: Alignment.topLeft,
-                  child: new CupertinoButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/Nanopore");
-                    },
-                    color: Colors.purple,
-                    child: new Text(
-                      "Nanopore Lab",
-                      style: new TextStyle(color: Colors.white),
-                    ),
+                  child: new SlugButton(
+                    routeName: "/Nanopore",
+                    buttonColor: Colors.purple,
+                    text: "Nanopore Lab",
                   ),
                 ),
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
                 new Align(
-                  alignment: Alignment.topLeft,
-                  child: new CupertinoButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/CompGenLab");
-                    },
-                    color: Colors.purple,
-                    child: new Text(
-                      "Computational Genomics Lab",
-                      style: new TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: new SlugButton(
+                      routeName: "/CompGenLab",
+                      buttonColor: Colors.purple,
+                      text: "Computational Genomics Lab",
+                    )),
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
                 new Align(
-                  alignment: Alignment.topLeft,
-                  child: new CupertinoButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/HGI");
-                    },
-                    color: Colors.purple,
-                    child: new Text(
-                      "Human Genomics Institute",
-                      style: new TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: new SlugButton(
+                      routeName: "/HGI",
+                      buttonColor: Colors.purple,
+                      text: "Human Genomics Institute",
+                    )),
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
-          new MergeSemantics(
+                new MergeSemantics(
                   child: new ListTile(
                     title: new Text("Show rooms on map?"),
                     trailing: new CupertinoSwitch(
@@ -484,38 +416,26 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                   ),
                 ),
                 new Align(
-                  alignment: Alignment.topLeft,
-                  child: new CupertinoButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/GraduateHousing");
-                    },
-                    color: Colors.deepPurple,
-                    child: new Text(
-                      "Graduate Student Housing",
-                      style: new TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: new SlugButton(
+                      routeName: "/GraduateHousing",
+                      buttonColor: Colors.deepPurple,
+                      text: "Graduate Student Housing",
+                    )),
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
                 new Align(
-                  alignment: Alignment.topLeft,
-                  child: new CupertinoButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/GraduateAdvising");
-                    },
-                    color: Colors.deepPurple,
-                    child: new Text(
-                      "Graduate Advising Office",
-                      style: new TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: new SlugButton(
+                      routeName: "/GraduateAdvising",
+                      buttonColor: Colors.deepPurple,
+                      text: "Graduate Advising Office",
+                    )),
                 new Padding(
                   padding: new EdgeInsets.all(1.0),
                 ),
-           new MergeSemantics(
+                new MergeSemantics(
                   child: new ListTile(
                     title: new Text("Show rooms on map?"),
                     trailing: new CupertinoSwitch(
@@ -523,8 +443,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
                       activeColor: Colors.deepPurple,
                       onChanged: (bool state) {
                         setState(() {
-                          selectedMajors[majorList.gradDivision.index] =
-                              state;
+                          selectedMajors[majorList.gradDivision.index] = state;
                         });
                       },
                     ),

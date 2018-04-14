@@ -18,8 +18,6 @@ import './rooms/MesaPage.dart';
 import './rooms/Nanopore.dart';
 import './key.dart';
 
-
-
 void main() {
   var preKey = new PenguinKey();
   MapView.setApiKey(preKey.grabKey());
