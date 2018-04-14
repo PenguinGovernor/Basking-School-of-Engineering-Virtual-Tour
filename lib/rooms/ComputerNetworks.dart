@@ -8,6 +8,7 @@ class ComputerNetworks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Room(
+        webViewUrl: "https://courses.soe.ucsc.edu/courses/cmpe150",
         isAndroid: false,
         roomName: "Computer Networks Lab",
         color: Colors.blue,

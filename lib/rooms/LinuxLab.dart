@@ -8,6 +8,7 @@ class LinuxLab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Room(
+        webViewUrl: "https://its.ucsc.edu/computer-labs/descriptions/be105.html",
         isAndroid: false,
         roomName: "Linux Lab",
         color: Colors.orange,

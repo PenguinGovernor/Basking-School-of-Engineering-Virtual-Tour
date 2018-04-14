@@ -12,6 +12,7 @@ class MesaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Room(
+        buttonText: "TAP FOR 360 VIEW",
         webViewUrl: "https://kuula.co/share/7lW3v?fs=1&vr=0&thumbs=1&chromeless=0&logo=0",
         isAndroid: false,
         roomName: "Mesa Engineering Program",

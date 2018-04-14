@@ -8,6 +8,7 @@ class Nanopore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Room(
+        webViewUrl: "https://nanopore.soe.ucsc.edu/",
         isAndroid: false,
         roomName: "Nanopore Lab",
         color: Colors.purple,

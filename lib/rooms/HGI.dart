@@ -8,6 +8,7 @@ class HGI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Room(
+        webViewUrl: "https://ucscgenomics.soe.ucsc.edu/",
         isAndroid: false,
         roomName: "Human Genomics Institute",
         color: Colors.purple,

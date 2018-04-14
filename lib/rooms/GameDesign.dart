@@ -8,6 +8,7 @@ class GameDesign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Room(
+        webViewUrl: "https://games.soe.ucsc.edu/adl",
         isAndroid: false,
         roomName: "Game Design Lab",
         color: Colors.green,

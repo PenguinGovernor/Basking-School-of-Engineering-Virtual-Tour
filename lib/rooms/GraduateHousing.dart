@@ -8,6 +8,7 @@ class GraduateHousing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Room(
+        webViewUrl: "https://housing.ucsc.edu/gradhousing/index.html",
         isAndroid: false,
         roomName: "Graduate Student Housing",
         color: Colors.deepPurple,

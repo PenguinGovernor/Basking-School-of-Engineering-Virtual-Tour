@@ -8,6 +8,7 @@ class CompGenLab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Room(
+        webViewUrl: "https://cgl.genomics.ucsc.edu/",
         isAndroid: false,
         roomName: "Computational Genomics Lab",
         color: Colors.purple,

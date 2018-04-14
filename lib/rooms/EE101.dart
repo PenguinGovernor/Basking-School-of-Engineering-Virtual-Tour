@@ -8,6 +8,7 @@ class EE101 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Room(
+        webViewUrl: "https://courses.soe.ucsc.edu/courses/ee101",
         isAndroid: false,
         roomName: "EE 101 Lab",
         color: Colors.indigo,

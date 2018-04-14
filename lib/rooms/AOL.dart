@@ -8,6 +8,7 @@ class AOL extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Room(
+      webViewUrl: "https://photon.soe.ucsc.edu/",
       isAndroid: false,
       roomName: "Applied Optics Lab",
       color: Colors.indigo,

@@ -8,6 +8,7 @@ class MechLab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Room(
+        webViewUrl: "https://courses.soe.ucsc.edu/courses/cmpe118",
         isAndroid: false,
         roomName: "Mechatronics Lab",
         color: Colors.blue,

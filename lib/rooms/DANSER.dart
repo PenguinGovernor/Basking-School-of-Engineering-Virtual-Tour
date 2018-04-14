@@ -8,6 +8,7 @@ class DANSER extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Room(
+        webViewUrl: "https://danser.soe.ucsc.edu/",
         isAndroid: false,
         roomName: "DANSER Lab",
         color: Colors.indigo,

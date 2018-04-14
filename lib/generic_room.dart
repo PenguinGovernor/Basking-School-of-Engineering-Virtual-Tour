@@ -14,9 +14,11 @@ class Room extends StatelessWidget {
   final String desc;
   final String image;
   final String webViewUrl;
+  final String buttonText;
 
   Room(
-      {this.webViewUrl,
+      {this.buttonText,
+      this.webViewUrl,
       this.isAndroid,
       this.roomName,
       this.color,
@@ -76,20 +78,32 @@ class Room extends StatelessWidget {
               child: isAndroid
                   ? new RaisedButton(
                       color: this.color,
-                      child: new Text("TAP FOR 360 VIEW"),
+                      child: buttonText == null ? new Text("TAP TO LEARN MORE") : new Text(buttonText),
                       onPressed: () {
-                        FlutterWebBrowser.openWebPage(
-                            url: this.webViewUrl,
-                            androidToolbarColor: this.color);
+                        if (this.webViewUrl == null) {
+                          FlutterWebBrowser.openWebPage(
+                              url: "https://www.google.com",
+                              androidToolbarColor: this.color);
+                        } else {
+                          FlutterWebBrowser.openWebPage(
+                              url: this.webViewUrl,
+                              androidToolbarColor: this.color);
+                        }
                       },
                     )
                   : new CupertinoButton(
                       color: this.color,
-                      child: new Text("TAP FOR 360 VIEW"),
+                      child: buttonText == null ? new Text("TAP TO LEARN MORE") : new Text(buttonText),
                       onPressed: () {
-                        FlutterWebBrowser.openWebPage(
-                            url: this.webViewUrl,
-                            androidToolbarColor: this.color);
+                        if (this.webViewUrl == null) {
+                          FlutterWebBrowser.openWebPage(
+                              url: "https://www.soe.ucsc.edu/",
+                              androidToolbarColor: this.color);
+                        } else {
+                          FlutterWebBrowser.openWebPage(
+                              url: this.webViewUrl,
+                              androidToolbarColor: this.color);
+                        }
                       },
                     ))
         ],

@@ -8,6 +8,7 @@ class ComputerVision extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Room(
+        webViewUrl: "https://vision.soe.ucsc.edu",
         isAndroid: false,
         roomName: "Computer Vision Lab",
         color: Colors.orange,
