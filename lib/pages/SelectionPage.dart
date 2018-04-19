@@ -82,7 +82,7 @@ class _SelectionPageBodyState extends State<SelectionPageBody> {
             child: new Column(
               children: <Widget>[
                 new ListTile(
-                  title: new Text("Organazations"),
+                  title: new Text("Organizations"),
                   leading: new Icon(
                     Icons.account_balance,
                     color: Colors.red,

@@ -19,7 +19,7 @@ class MesaPage extends StatelessWidget {
         roomName: "Mesa Engineering Program",
         color: Colors.red,
         roomNumber: "Baskin Engineering 1 Room 399",
-        category: "Organazations",
+        category: "Organizations",
         desc: _desc,
         gmapLink: "https://goo.gl/maps/ap9muZyQMEB2",
         icon: Icons.account_balance,
